@@ -1,5 +1,7 @@
 const Travel = require('../models/Travel.model')
 
+
+// GET
 const getAllTravels = async (req, res) => {
 
     try {
@@ -16,6 +18,7 @@ const getAllTravels = async (req, res) => {
 
 }
 
+// GET
 const getTravelById = async (req, res) => {
 
     try {
@@ -36,6 +39,7 @@ const getTravelById = async (req, res) => {
 
 }
 
+// POST
 const addTravelBook = async (req, res) => {
 
     try {
@@ -60,4 +64,45 @@ const addTravelBook = async (req, res) => {
 
 }
 
-module.exports = {getAllTravels, getTravelById, addTravelBook}
+// PUT
+const updateTravelBook = async (req, res) => {
+
+    try {
+        
+        const {title, image, description} = req.body
+
+        const updatedTravel = await Travel.findByIdAndUpdate(req.params.id, {
+            title,
+            image,
+            description
+        }, {new: true})
+
+        return res.status(200).json({
+            message:'Success',
+            updatedTravel
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.send(error)
+    }
+
+}
+
+
+// DELETE
+const removeTravelBook = async (req, res) => {
+    try {
+        const {title, image, description} = req.body
+        await Travel.findByIdAndRemove(req.params.id)
+        return res.status(200).json({
+            message:'Deleted'
+        })
+    } catch (error) {
+        console.log(error);
+        res.send(error)
+    }
+
+}
+
+module.exports = {getAllTravels, getTravelById, addTravelBook, updateTravelBook, removeTravelBook}
