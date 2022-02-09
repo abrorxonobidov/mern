@@ -1,6 +1,5 @@
 const Travel = require('../models/Travel.model')
 
-
 // GET
 const getAllTravels = async (req, res) => {
 
@@ -89,11 +88,10 @@ const updateTravelBook = async (req, res) => {
 
 }
 
-
 // DELETE
 const removeTravelBook = async (req, res) => {
+
     try {
-        const {title, image, description} = req.body
         await Travel.findByIdAndRemove(req.params.id)
         return res.status(200).json({
             message:'Deleted'
