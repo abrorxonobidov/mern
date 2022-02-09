@@ -8,7 +8,7 @@ const getAllTravels = async (req, res) => {
 
         return res.status(200).json({
             message: 'Success',
-            travels: travels
+            travels: travels.reverse()
         })
 
     } catch (error) {
