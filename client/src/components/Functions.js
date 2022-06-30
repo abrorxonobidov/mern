@@ -1,5 +1,19 @@
 export default class Functions {
 
+
+    static factorial = n => n <= 0 ? 1 : n * this.factorial(n - 1);
+
+    static gcd = (a, b) => b === 0 ? a : this.gcd(b, a % b)
+
+    static sumArray = ar => ar.length ? ar.pop() + this.sumArray(ar) : 0
+
+    static maxItem = arr => {
+        let max = arr.shift()
+        if (arr.length === 0) return max
+        if (max > arr[0]) arr[0] = max;
+        return this.maxItem(arr)
+    }
+
     static binarySearch = (array, item) => {
         let min = 0
         let max = array.length - 1
