@@ -90,32 +90,25 @@ export default class Functions {
         }
     }
 
+    static swapArrayElements = (arr, xp, yp) => {
+        let temp = arr[xp];
+        arr[xp] = arr[yp];
+        arr[yp] = temp;
+    }
+
     static bubbleSort = arr => {
-        let index = 0;
-        let next = 1;
-        let limit = 0
-        let target
-        while (next < arr.length - 1 && limit < 100) {
-            target = arr[index]
-            if (index < arr.length) {
-                if (target > arr[index + 1]) {
-                    arr[index] = arr[index + 1]
-                    arr[index + 1] = target
-                    target = arr[index + 1];
-                    index += 1
-                    next = 0
-                } else {
-                    if (target === arr[index + 1])
-                        next += 1
-                    index = ++next
+        let i, j;
+        let n = arr.length
+        let swapped;
+        for (i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    this.swapArrayElements(arr, j, j + 1);
+                    swapped = true;
                 }
             }
-            limit++
-        }
-        if (limit >= 100) {
-            console.log(target)
-            console.log(next)
-            console.log('loop out of limit')
+            if (swapped === false) break;
         }
 
         return arr
