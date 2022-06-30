@@ -4,8 +4,17 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import AddBook from "./pages/AddBook";
 import UpdateBook from "./pages/UpdateBook";
 import ViewBook from "./pages/ViewBook";
+import Functions from "./components/Functions";
 
 function App() {
+
+    let arr = [
+        100, 15,98,12,25, 68, 68,11,75,16, 0, 100
+    ];
+
+    console.log(arr)
+    console.log(Functions.bubbleSort(arr))
+
     return (
         <BrowserRouter>
             <Navbar/>

@@ -14,6 +14,30 @@ export default class Functions {
         return this.maxItem(arr)
     }
 
+    static maxItemIndex = (arr) => {
+        let index = 0
+        let max = arr[0]
+        arr.map((item, i) => {
+            if (max < item) {
+                max = item
+                index = i
+            }
+        })
+        return index
+    }
+
+    static selectSort = arr => {
+        let new_arr = [];
+        let length = arr.length;
+        let index
+        for (let i = 0; i < length; i++) {
+            index = this.maxItemIndex(arr)
+            new_arr.unshift(arr[index])
+            arr.splice(index, 1)
+        }
+        return new_arr
+    }
+
     static binarySearch = (array, item) => {
         let min = 0
         let max = array.length - 1
@@ -64,6 +88,37 @@ export default class Functions {
             })
             return [...this.quickSort(left), pivot, ...this.quickSort(right)]
         }
+    }
+
+    static bubbleSort = arr => {
+        let index = 0;
+        let next = 1;
+        let limit = 0
+        let target
+        while (next < arr.length - 1 && limit < 100) {
+            target = arr[index]
+            if (index < arr.length) {
+                if (target > arr[index + 1]) {
+                    arr[index] = arr[index + 1]
+                    arr[index + 1] = target
+                    target = arr[index + 1];
+                    index += 1
+                    next = 0
+                } else {
+                    if (target === arr[index + 1])
+                        next += 1
+                    index = ++next
+                }
+            }
+            limit++
+        }
+        if (limit >= 100) {
+            console.log(target)
+            console.log(next)
+            console.log('loop out of limit')
+        }
+
+        return arr
     }
 
 }
