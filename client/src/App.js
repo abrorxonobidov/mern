@@ -8,6 +8,10 @@ import Functions from "./components/Functions";
 
 function App() {
 
+    let arr = [8, 5, 6, 9, 1, 2, 3, 7, 1, 4, 4]
+    console.log(arr)
+    console.log(Functions.mergeSort(arr))
+
     return (
         <BrowserRouter>
             <Navbar/>
