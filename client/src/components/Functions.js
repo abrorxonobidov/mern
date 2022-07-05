@@ -150,7 +150,7 @@ export default class Functions {
             j++
             k++
         }
-        
+
         return arr
     }
 
